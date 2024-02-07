@@ -33,39 +33,21 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
 1. Load and preprocess the content and style images
 2. Define VGG19 model and select output layers corresponding to content and style representations
 3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
-  _ Content Loss:
+   
+  _Content loss:
   _
-  The content loss measures the difference between the content of the generated image (\( \vec{x} \)) and the target image (\( \vec{p} \)) at a certain layer (\( l \)):
+  $L_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum_{i,j} (F^l_{ij} - P^l_{ij})^2$
   
-  \[ \mathcal{L}_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum_{i,j} (F_{ij}^l - P_{ij}^l)^2 \]
-  
-  where:
-  - \( \vec{p} \) is the target image,
-  - \( \vec{x} \) is the generated image,
-  - \( l \) is the layer index,
-  - \( F_{ij}^l \) is the feature representation of \( \vec{x} \) at layer \( l \),
-  - \( P_{ij}^l \) is the feature representation of \( \vec{p} \) at layer \( l \).
-  
-  _Style Loss:_
-  
-  The style loss quantifies the difference in style between the generated image (\( \vec{x} \)) and the reference style image (\( \vec{a} \)):
-  
-  \[ \mathcal{L}_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l \]
-  
-  where:
-  - \( \vec{a} \) is the reference style image,
-  - \( L \) is the total number of layers,
-  - \( w_l \) is the weight for layer \( l \),
-  - \( E_l \) is the style loss at layer \( l \).
-  
-  _Total Loss:
+  _Style loss: 
   _
-  The total loss is a combination of the content and style losses, weighted by parameters \( \alpha \) and \( \beta \):
+  $L_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l$
   
-  \[ \mathcal{L}_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha \mathcal{L}_{content}(\vec{p}, \vec{x}) + \beta \mathcal{L}_{style}(\vec{a}, \vec{x}) \]
-  
-  where:
-  - \( \alpha \) and \( \beta \) are hyperparameters that control the influence of content and style, respectively.
+  _Total loss:
+  _
+  $L_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L_{content}(\vec{p}, \vec{x}) + \beta L_{style}(\vec{a}, \vec{x})$
+    
+    where:
+    - \( \alpha \) and \( \beta \) are hyperparameters that control the influence of content and style, respectively.
 
   
 5. Perform gradient descent optimization to generate the styled image
