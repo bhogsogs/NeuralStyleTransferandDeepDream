@@ -37,7 +37,8 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
 3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
    
   _Content loss:
-  $L\_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum\_{i,j} (F^l\_{\ij} - P^l\_{\ij})^2$
+  
+  $L\_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum\_{i,j} (F^l\_{ij} - P^l\_{ij})^2$
   
   _Style loss: 
   $$
