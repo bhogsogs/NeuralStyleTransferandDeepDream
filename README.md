@@ -9,7 +9,15 @@ It does so by forwarding an image through the network, then calculating the grad
 
 This notebook presents an implementation of the DeepDream algorithm. We make use of particularly 3 layers of a pretrained InceptionV3 Convnet along with their corresponding coefficients(basically, a way to tune the influence of the chosen layers on the input image), and gradually implement changes in our input image so that the features encapsulated in these three chosen layers slowly become more promiment in our input image. The key part is implementing the gradient ascent algorithm, where  defined by the equation :-
 
-$w_{n+1}=w_n+\alpha \nabla_w f(w)$
+\[ \text{Modified Image}_{n+1} = \text{Original Image}_n + \alpha \nabla_{\text{Original Image}} f(\text{Original Image}_n) \]
+
+where:
+- \(\text{Modified Image}_{n+1}\) is the updated image after the \(n\)-th iteration,
+- \(\text{Original Image}_n\) is the current image at the \(n\)-th iteration,
+- \(\alpha\) is the step size or learning rate, and
+- \(\nabla_{\text{Original Image}} f(\text{Original Image}_n)\) is the gradient of the objective function \(f\) with respect to the original image at the \(n\)-th iteration.
+
+This iterative process enhances and amplifies features in the image, creating visually interesting patterns characteristic of the DeepDream algorithm.
 
 It was also important to account for the lossess obtained while passing our image through the ConvNet and the loss in pixel data that arose after passing it through various kernels. An update equation for the same was also included in the algorithm implementation.
 
@@ -24,18 +32,40 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
 1. Load and preprocess the content and style images
 2. Define VGG19 model and select output layers corresponding to content and style representations
 3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
+  _ Content Loss:
+  _
+  The content loss measures the difference between the content of the generated image (\( \vec{x} \)) and the target image (\( \vec{p} \)) at a certain layer (\( l \)):
+  
+  \[ \mathcal{L}_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum_{i,j} (F_{ij}^l - P_{ij}^l)^2 \]
+  
+  where:
+  - \( \vec{p} \) is the target image,
+  - \( \vec{x} \) is the generated image,
+  - \( l \) is the layer index,
+  - \( F_{ij}^l \) is the feature representation of \( \vec{x} \) at layer \( l \),
+  - \( P_{ij}^l \) is the feature representation of \( \vec{p} \) at layer \( l \).
+  
+  _Style Loss:_
+  
+  The style loss quantifies the difference in style between the generated image (\( \vec{x} \)) and the reference style image (\( \vec{a} \)):
+  
+  \[ \mathcal{L}_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l \]
+  
+  where:
+  - \( \vec{a} \) is the reference style image,
+  - \( L \) is the total number of layers,
+  - \( w_l \) is the weight for layer \( l \),
+  - \( E_l \) is the style loss at layer \( l \).
+  
+  _Total Loss:
+  _
+  The total loss is a combination of the content and style losses, weighted by parameters \( \alpha \) and \( \beta \):
+  
+  \[ \mathcal{L}_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha \mathcal{L}_{content}(\vec{p}, \vec{x}) + \beta \mathcal{L}_{style}(\vec{a}, \vec{x}) \]
+  
+  where:
+  - \( \alpha \) and \( \beta \) are hyperparameters that control the influence of content and style, respectively.
 
-Content loss: 
-
-$\mathcal{L}_{content}(\vec{p}, \vec{x}, l)= \frac{1}{2} \sum_{i,j} (F_{ij}^l - P_{ij}^l)^2$
-
-Style loss:
-
-$\mathcal{L}_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l$  
-
-Total loss: 
-
-$\mathcal{L}_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha \mathcal{L}_{content}(\vec{p}, \vec{x}) + \beta \mathcal{L}_{style}(\vec{a}, \vec{x})$
   
 5. Perform gradient descent optimization to generate the styled image
    
