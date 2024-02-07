@@ -45,23 +45,20 @@ $L\_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum\_{i,j} (F^l\_{ij} - P^l\_{
 * $l$ is the index of the layer
 * $F_{ij}^l$ is the feature representation of $\vec{x}$ at layer $l$
 * $P_{ij}^l$ is the feature representation of $\vec{p}$ at layer $l$
+
 _Style loss:_
 
 $\mathcal{L}\_{\text {style }}(\vec{a}, \vec{x})=\sum\_l w\_l E\_l$
 
+* $\text{Reference Style Image} (\vec{a})$ is the style reference image
+*  $L$ is the total number of layers
+*  $w_l$ is the weight for layer $l$
+*  $E_l$ is the style loss at layer $l$
+  
 _Total loss:_
 
 $L\_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L\_{content}(\vec{p}, \vec{x}) + \beta L\_{style}(\vec{a}, \vec{x})$
- where:
- - \( \alpha \) and \( \beta \) are hyperparameters that control the influence of content and style, respectively.
 
+*$\alpha$ and $\beta$ are hyperparameters that control the influence of content and style, respectively.
   
 5. Perform gradient descent optimization to generate the styled image
-   
-The core style transfer logic is in training_loop() which trains the image over multiple iterations to minimize a weighted combination of content and style losses. The Gram Matrix loss function is used to measure the 
-
-The main parameters to tweak are:
-
-content_path and style_path: Images to use
-iterations: Number of optimization steps
-a and b: Weights for content vs style loss
