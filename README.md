@@ -3,14 +3,11 @@ An implementation of the neural style transfer algorithm along with the DeepDrea
 
 ## DeepDream Algorithm (Inceptionism)
 
-DeepDream is an experiment that visualizes the patterns learned by a neural network. Similar to when a child watches clouds and tries to interpret random shapes, DeepDream over-interprets and enhances the patterns it sees in an image.
-
-It does so by forwarding an image through the network, then calculating the gradient of the image with respect to the activations of a particular layer. The image is then modified to increase these activations, enhancing the patterns seen by the network, and resulting in a dream-like image. This process was dubbed "Inceptionism" (a reference to InceptionNet, and the movie Inception).
+DeepDream is an experiment that visualizes the patterns learned by a neural network. Similar to when a child watches clouds and tries to interpret random shapes, DeepDream over-interprets and enhances the patterns it sees in an image. It does so by forwarding an image through the network, then calculating the gradient of the image with respect to the activations of a particular layer. The image is then modified to increase these activations, enhancing the patterns seen by the network, and resulting in a dream-like image. This process was dubbed "Inceptionism" (a reference to InceptionNet, and the movie Inception).
 
 This notebook presents an implementation of the DeepDream algorithm. We make use of particularly 3 layers of a pretrained InceptionV3 Convnet along with their corresponding coefficients(basically, a way to tune the influence of the chosen layers on the input image), and gradually implement changes in our input image so that the features encapsulated in these three chosen layers slowly become more promiment in our input image. The key part is implementing the gradient ascent algorithm, where  defined by the equation :-
 
-$\text{Modified Image}_{n+1} = \text{Original Image}_{n} + \alpha \nabla_{\text{Original Image}} f(\text{Original Image}_{n})$
-
+$\text{Image}_{n+1} = \text{Image}_{n} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})$
 where:
 - \( \text{Modified Image}_{n+1} \) is the updated image after the \(n\)-th iteration,
 - \( \text{Original Image}_n \) is the current image at the \(n\)-th iteration,
