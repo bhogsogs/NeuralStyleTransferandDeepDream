@@ -9,7 +9,7 @@ This notebook presents an implementation of the DeepDream algorithm. We make use
 
 **Neural Style Transfer Update Rule**
 
-$\text{Image}_{n+1} = \text{Image}_{n} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})$
+$\text{Image}{n+1} = \text{Image}{n} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})$
 
 where:
 
