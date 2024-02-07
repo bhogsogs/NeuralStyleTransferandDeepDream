@@ -7,8 +7,6 @@ DeepDream is an experiment that visualizes the patterns learned by a neural netw
 
 This notebook presents an implementation of the DeepDream algorithm. We make use of particularly 3 layers of a pretrained InceptionV3 Convnet along with their corresponding coefficients(basically, a way to tune the influence of the chosen layers on the input image), and gradually implement changes in our input image so that the features encapsulated in these three chosen layers slowly become more promiment in our input image. The key part is implementing the gradient ascent algorithm, where  defined by the equation :-
 
-**Neural Style Transfer Update Rule**
-
 $\text{Image}\_\{n+1\} = \text{Image}\_\{n\} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})$
 
 where:
