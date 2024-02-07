@@ -12,10 +12,11 @@ This notebook presents an implementation of the DeepDream algorithm. We make use
 \[ \text{Modified Image}_{n+1} = \text{Original Image}_n + \alpha \nabla_{\text{Original Image}} f(\text{Original Image}_n) \]
 
 where:
-- \(\text{Modified Image}_{n+1}\) is the updated image after the \(n\)-th iteration,
-- \(\text{Original Image}_n\) is the current image at the \(n\)-th iteration,
-- \(\alpha\) is the step size or learning rate, and
-- \(\nabla_{\text{Original Image}} f(\text{Original Image}_n)\) is the gradient of the objective function \(f\) with respect to the original image at the \(n\)-th iteration.
+- \( \text{Modified Image}_{n+1} \) is the updated image after the \(n\)-th iteration,
+- \( \text{Original Image}_n \) is the current image at the \(n\)-th iteration,
+- \( \alpha \) is the step size or learning rate, and
+- \( \nabla_{\text{Original Image}} f(\text{Original Image}_n) \) is the gradient of the objective function \(f\) with respect to the original image at the \(n\)-th iteration.
+
 
 This iterative process enhances and amplifies features in the image, creating visually interesting patterns characteristic of the DeepDream algorithm.
 
