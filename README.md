@@ -39,6 +39,11 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
       _Content loss:_
       
       $L\_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum\_{i,j} (F^l\_{ij} - P^l\_{ij})^2$
+    -\( \vec{p} \) is the target image,
+    - \( \vec{x} \) is the generated image,
+    - \( l \) is the layer index,
+    - \( F_{ij}^l \) is the feature representation of \( \vec{x} \) at layer \( l \),
+    - \( P_{ij}^l \) is the feature representation of \( \vec{p} \) at layer \( l \).
       
       _Style loss:_
     
