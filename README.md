@@ -35,7 +35,9 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
   $L_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum_{i,j} (F^l_{ij} - P^l_{ij})^2$
   
   _Style loss: 
-  $L_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l$
+  $$
+\mathcal{L}_{\text {style }}(\vec{a}, \vec{x})=\sum_{l=0}^L w_l E_l
+$$
   
   _Total loss:
   $L_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L_{content}(\vec{p}, \vec{x}) + \beta L_{style}(\vec{a}, \vec{x})$
