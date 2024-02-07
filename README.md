@@ -36,18 +36,17 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
 2. Define VGG19 model and select output layers corresponding to content and style representations
 3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
    
-  _Content loss:
+  _Content loss:_
   
   $L\_{content}(\vec{p}, \vec{x}, l) = \frac{1}{2} \sum\_{i,j} (F^l\_{ij} - P^l\_{ij})^2$
   
-  _Style loss: 
-  $$
-\mathcal{L}_{\text {style }}(\vec{a}, \vec{x})=\sum_{l=0}^L w_l E_l
-$$
+  _Style loss:_
+
+  $\mathcal{L}\_{\text {style }}(\vec{a}, \vec{x})=\sum\_l=0^L w\_l E\_l$
   
-  _Total loss:
-  $L_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L_{content}(\vec{p}, \vec{x}) + \beta L_{style}(\vec{a}, \vec{x})$
-    
+  _Total loss:_
+
+  $L\_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L\_{content}(\vec{p}, \vec{x}) + \beta L\_{style}(\vec{a}, \vec{x})$
  where:
  - \( \alpha \) and \( \beta \) are hyperparameters that control the influence of content and style, respectively.
 
