@@ -30,11 +30,7 @@ Neural style transfer is an optimization technique used to take two images—a c
 
 ![image](https://github.com/bhogsogs/Neural-Style-Transfer-From-Scratch-with-DeepDream/assets/134948011/c9e69c21-3cab-4821-935f-4279f1f85764)
 
-Here, we try to implement the neural style transfer algorithm from scratch on the image that we obtained after subjecting it to the DeepDream algorithm. We leveraged a pretrained VGG19 model and picked up the intermediate layers of the same to quantify the content and style images. and the key steps are:
-
-1. Load and preprocess the content and style images
-2. Define VGG19 model and select output layers corresponding to content and style representations
-3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
+Here, we try to implement the neural style transfer algorithm from scratch on the image that we obtained after subjecting it to the DeepDream algorithm. We leveraged a pretrained VGG19 model and picked up the intermediate layers of the same to quantify the content and style images. The key part was to define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
    
 _Content loss:_
 
@@ -59,6 +55,14 @@ _Total loss:_
 
 $L\_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha L\_{content}(\vec{p}, \vec{x}) + \beta L\_{style}(\vec{a}, \vec{x})$
 
-*$\alpha$ and $\beta$ are hyperparameters that control the influence of content and style, respectively.
+* $\alpha$ and $\beta$ are hyperparameters that control the influence of content and style, respectively.
   
 5. Perform gradient descent optimization to generate the styled image
+
+## Results
+
+After running the notebook on a local CPU after a compute time of roughly ~x hours, we obtained the final images that can be obtained in the "results" folder.
+
+## Usage
+
+Please refer to the Jupyter notebook for more information on how to use these custom classes and the specific implementation details.
