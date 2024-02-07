@@ -7,12 +7,19 @@ DeepDream is an experiment that visualizes the patterns learned by a neural netw
 
 This notebook presents an implementation of the DeepDream algorithm. We make use of particularly 3 layers of a pretrained InceptionV3 Convnet along with their corresponding coefficients(basically, a way to tune the influence of the chosen layers on the input image), and gradually implement changes in our input image so that the features encapsulated in these three chosen layers slowly become more promiment in our input image. The key part is implementing the gradient ascent algorithm, where  defined by the equation :-
 
-$\text{Image}_{n+1} = \text{Image}_{n} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})
+**Neural Style Transfer Update Rule**
+
+$\text{Image}_{n+1} = \text{Image}_{n} + \alpha \nabla_{\text{Image}} f(\text{Image}_{n})$
+
 where:
-- \( \text{Modified Image}_{n+1} \) is the updated image after the \(n\)-th iteration,
-- \( \text{Original Image}_n \) is the current image at the \(n\)-th iteration,
-- \( \alpha \) is the step size or learning rate, and
-- \( \nabla_{\text{Original Image}} f(\text{Original Image}_n) \) is the gradient of the objective function \(f\) with respect to the original image at the \(n\)-th iteration.
+
+* $\text{Image}_{n+1}$ is the updated image after the $n^{th}$ iteration,
+    
+* $\text{Image}_n$ is the current image at the $n^{th}$ iteration, 
+    
+* $\alpha$ is the step size or learning rate, and
+    
+* $\nabla_{\text{Image}} f(\text{Image}_{n})$ is the gradient of the loss function $f$ with respect to the image at iteration $n$.
 
 
 This iterative process enhances and amplifies features in the image, creating visually interesting patterns characteristic of the DeepDream algorithm.
