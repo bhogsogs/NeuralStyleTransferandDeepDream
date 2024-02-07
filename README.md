@@ -10,6 +10,7 @@ It does so by forwarding an image through the network, then calculating the grad
 This notebook presents an implementation of the DeepDream algorithm. We make use of particularly 3 layers of a pretrained InceptionV3 Convnet along with their corresponding coefficients(basically, a way to tune the influence of the chosen layers on the input image), and gradually implement changes in our input image so that the features encapsulated in these three chosen layers slowly become more promiment in our input image. The key part is implementing the gradient ascent algorithm, where  defined by the equation :-
 
 $\text{Modified Image}_{n+1} = \text{Original Image}_{n} + \alpha \nabla_{\text{Original Image}} f(\text{Original Image}_{n})$
+
 where:
 - \( \text{Modified Image}_{n+1} \) is the updated image after the \(n\)-th iteration,
 - \( \text{Original Image}_n \) is the current image at the \(n\)-th iteration,
