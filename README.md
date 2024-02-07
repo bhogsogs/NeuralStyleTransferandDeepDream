@@ -25,9 +25,17 @@ Here, we try to implement the neural style transfer algorithm from scratch on th
 2. Define VGG19 model and select output layers corresponding to content and style representations
 3. Define loss functions to calculate content, style and total loss; an MSE loss function for content loss, and a Gram Matrix based style loss for style differences:-
 
-  $\mathcal{L}_{\text {content }}(\vec{p}, \vec{x}, l)=\frac{1}{2} \sum_{i, j}\left(F_{i j}^l-P_{i j}^l\right)^2$
-  $\mathcal{L}_{\text {style }}(\vec{a}, \vec{x})=\sum_{l=0}^L w_l E_l $
-  $\mathcal{L}_{\text {total }}(\vec{p}, \vec{a}, \vec{x})=\alpha \mathcal{L}_{\text {content }}(\vec{p}, \vec{x})+\beta \mathcal{L}_{\text {style }}(\vec{a}, \vec{x})$
+Content loss: 
+
+$\mathcal{L}_{content}(\vec{p}, \vec{x}, l)= \frac{1}{2} \sum_{i,j} (F_{ij}^l - P_{ij}^l)^2$
+
+Style loss:
+
+$\mathcal{L}_{style}(\vec{a}, \vec{x}) = \sum_{l=0}^L w_l E_l$  
+
+Total loss: 
+
+$\mathcal{L}_{total}(\vec{p}, \vec{a}, \vec{x}) = \alpha \mathcal{L}_{content}(\vec{p}, \vec{x}) + \beta \mathcal{L}_{style}(\vec{a}, \vec{x})$
   
 5. Perform gradient descent optimization to generate the styled image
    
