@@ -1,4 +1,4 @@
-# Neural-Style-Transfer-From-Scratch-with-DeepDream
+# Neural Style Transfer From Scratch with DeepDream
 An implementation of the neural style transfer algorithm along with the DeepDream algorithm to incorporate features of style inside images.
 
 ## DeepDream Algorithm (Inceptionism)
